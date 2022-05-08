@@ -120,10 +120,11 @@ public class Main {
         int[] arrayZeroLeft = {5, 4, 3, 0, 6, 0, 0, 5, 6, 0, 25, 0, 8, 7, 3, 0, 1, 1, 0, 6, 4};
         System.out.println(Arrays.toString(arrayZeroLeft));
         for (int i = 0; i < arrayZeroLeft.length; i++) {
-            if (arrayZeroLeft[i] != 0);{
+            if (arrayZeroLeft[i] != 0) ;
+            {
                 int tempZeroLeft = 0;
                 for (int j = 0; j < arrayZeroLeft.length; j++) {
-                    if (arrayZeroLeft[j] != 0){
+                    if (arrayZeroLeft[j] != 0) {
                         tempZeroLeft = arrayZeroLeft[j];
                         arrayZeroLeft[j] = arrayZeroLeft[i];
                         arrayZeroLeft[i] = tempZeroLeft;
@@ -140,10 +141,11 @@ public class Main {
         int[] arrayZeroRight = {5, 4, 3, 0, 6, 0, 0, 5, 6, 0, 25, 0, 8, 7, 3, 0, 1, 1, 0, 6, 4};
         System.out.println(Arrays.toString(arrayZeroRight));
         for (int i = 0; i < arrayZeroRight.length; i++) {
-            if (arrayZeroRight[i] != 0);{
+            if (arrayZeroRight[i] != 0) ;
+            {
                 int tempZeroRight = 0;
                 for (int j = 0; j < arrayZeroRight.length; j++) {
-                    if (arrayZeroRight[j] == 0){
+                    if (arrayZeroRight[j] == 0) {
                         tempZeroRight = arrayZeroRight[j];
                         arrayZeroRight[j] = arrayZeroRight[i];
                         arrayZeroRight[i] = tempZeroRight;
@@ -160,5 +162,65 @@ public class Main {
         // следования элементов должен быть случаен (т. е. не подходит вариант, когда в массиве постоянно выпадает
         // сначала 6 положительных, а потом 6 отрицательных чисел или же когда элементы постоянно чередуются через
         // один и пр.). Вывести полученный массив на экран.
+
+        int[] arrayRandom = new int[12];
+        int c1 = 0;
+        int c2 = 0;
+        for (int i = 0; i < arrayRandom.length; i++) {
+
+
+            arrayRandom[i] = random.nextInt(-10, 10);
+
+            if (arrayRandom[i] == 0) {
+                while (arrayRandom[i] == 0){
+                    arrayRandom[i] = random.nextInt(-10, 10);
+                    if (c1 < arrayRandom.length / 2 && arrayRandom[i] < 0) {
+                        c1++;
+                    } else if (c2 < arrayRandom.length / 2 && arrayRandom[i] > 0) {
+                        c2++;
+                    } else if (c2 >= arrayRandom.length / 2) {
+                        while (arrayRandom[i] >= 0) {
+                            arrayRandom[i] = random.nextInt(-10, 10);
+                            if (c1 < arrayRandom.length / 2 && arrayRandom[i] < 0) {
+                                c1++;
+                            }
+                        }
+                    } else if (c1 >= arrayRandom.length / 2) {
+                        while (arrayRandom[i] <= 0) {
+                            arrayRandom[i] = random.nextInt(-10, 10);
+                            if (c2 < arrayRandom.length / 2 && arrayRandom[i] > 0) {
+                                c2++;
+                            }
+                        }
+                    }
+                }
+            } else if (c2 > arrayRandom.length / 2) {
+                while (arrayRandom[i] >= 0) {
+                    arrayRandom[i] = random.nextInt(-10, 10);
+                    if (c1 < arrayRandom.length / 2 && arrayRandom[i] < 0) {
+                        c1++;
+                    }
+                }
+            } else if (c1 > arrayRandom.length / 2) {
+                while (arrayRandom[i] <= 0) {
+                    arrayRandom[i] = random.nextInt(-10, 10);
+                    if (c2 < arrayRandom.length / 2 && arrayRandom[i] > 0) {
+                        c2++;
+                    }
+                }
+            } else if (c1 < arrayRandom.length / 2 && arrayRandom[i] < 0) {
+
+
+                        c2++;
+
+
+            } else if (c2 < arrayRandom.length / 2 && arrayRandom[i] > 0) {
+                        c2++;
+                    }
+
+                    }
+        System.out.println(Arrays.toString(arrayRandom));
+        System.out.println(c1);
+        System.out.println(c2);
     }
 }
