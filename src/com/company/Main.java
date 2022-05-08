@@ -164,63 +164,21 @@ public class Main {
         // один и пр.). Вывести полученный массив на экран.
 
         int[] arrayRandom = new int[12];
-        int c1 = 0;
-        int c2 = 0;
+        int counterMinusValue = 0;
+        int counterPlusValue = 0;
         for (int i = 0; i < arrayRandom.length; i++) {
-
-
-            arrayRandom[i] = random.nextInt(-10, 10);
-
-            if (arrayRandom[i] == 0) {
-                while (arrayRandom[i] == 0){
-                    arrayRandom[i] = random.nextInt(-10, 10);
-                    if (c1 < arrayRandom.length / 2 && arrayRandom[i] < 0) {
-                        c1++;
-                    } else if (c2 < arrayRandom.length / 2 && arrayRandom[i] > 0) {
-                        c2++;
-                    } else if (c2 >= arrayRandom.length / 2) {
-                        while (arrayRandom[i] >= 0) {
-                            arrayRandom[i] = random.nextInt(-10, 10);
-                            if (c1 < arrayRandom.length / 2 && arrayRandom[i] < 0) {
-                                c1++;
-                            }
-                        }
-                    } else if (c1 >= arrayRandom.length / 2) {
-                        while (arrayRandom[i] <= 0) {
-                            arrayRandom[i] = random.nextInt(-10, 10);
-                            if (c2 < arrayRandom.length / 2 && arrayRandom[i] > 0) {
-                                c2++;
-                            }
-                        }
-                    }
-                }
-            } else if (c2 > arrayRandom.length / 2) {
-                while (arrayRandom[i] >= 0) {
-                    arrayRandom[i] = random.nextInt(-10, 10);
-                    if (c1 < arrayRandom.length / 2 && arrayRandom[i] < 0) {
-                        c1++;
-                    }
-                }
-            } else if (c1 > arrayRandom.length / 2) {
-                while (arrayRandom[i] <= 0) {
-                    arrayRandom[i] = random.nextInt(-10, 10);
-                    if (c2 < arrayRandom.length / 2 && arrayRandom[i] > 0) {
-                        c2++;
-                    }
-                }
-            } else if (c1 < arrayRandom.length / 2 && arrayRandom[i] < 0) {
-
-
-                        c2++;
-
-
-            } else if (c2 < arrayRandom.length / 2 && arrayRandom[i] > 0) {
-                        c2++;
-                    }
-
-                    }
+            do {
+                arrayRandom[i] = random.nextInt(-10, 10);
+            } while (arrayRandom[i] == 0 && counterMinusValue >= arrayRandom.length / 2 &&
+                    counterPlusValue >= arrayRandom.length / 2 );
+            if (arrayRandom[i] < 0) {
+                counterMinusValue++;
+            } else {
+                counterPlusValue++;
+            }
+        }
         System.out.println(Arrays.toString(arrayRandom));
-        System.out.println(c1);
-        System.out.println(c2);
+        System.out.println(counterMinusValue);
+        System.out.println(counterPlusValue);
     }
 }
