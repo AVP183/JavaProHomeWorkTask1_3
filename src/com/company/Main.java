@@ -20,26 +20,57 @@ public class Main {
         System.out.println("Task 2");
 //        2. Написать код, который заполнит массив произвольного размера числами по
 //        возрастанию, начиная с центра массива, например, `[5,4,3,2,1,0,1,2,3,4,5]`.
-
+        Random random = new Random();
+        int size = random.nextInt(1, 15);
+        int[] arraySymmetricValue = new int[size];
+        for (int i = 0; i <= arraySymmetricValue.length / 2; i++) {
+            if (arraySymmetricValue.length % 2 == 1) {
+                arraySymmetricValue[arraySymmetricValue.length / 2 + i] =
+                        arraySymmetricValue[arraySymmetricValue.length / 2] + i;
+                arraySymmetricValue[arraySymmetricValue.length / 2 - i] =
+                        arraySymmetricValue[arraySymmetricValue.length / 2] + i;
+            } else {
+                for (int j = 0; j <= arraySymmetricValue.length / 2; j++) {
+                    arraySymmetricValue[arraySymmetricValue.length / 2 - j] =
+                            arraySymmetricValue[arraySymmetricValue.length / 2] + j;
+                }
+                for (int j = 1; j < arraySymmetricValue.length / 2; j++) {
+                    arraySymmetricValue[arraySymmetricValue.length / 2 + j] =
+                            arraySymmetricValue[arraySymmetricValue.length / 2] + j;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(arraySymmetricValue));
 
         System.out.println("Task 3");
 //        3. Найти в массиве число, которое повторяется наибольшее количество раз.
         int valueArrayTemplate = 0;
-        int[] arrayTemplate = new int[20];
-        Random random = new Random();
-//        for (int i = 0; i < arrayTemplate.length; i++) {
-//            arrayTemplate[i] = random.nextInt(1, 5);
-//        }
-//        System.out.println(Arrays.toString(arrayTemplate));
-//        for (int i = 0; i < arrayTemplate.length; i++) {
-//            int counterArrayTemplate = 0;
-//            for (int j = 0; j < arrayTemplate.length; j++) {
-//                if (arrayTemplate[i] == arrayTemplate[j]) {
-//                    counterArrayTemplate++;
-//                }
-//            }
-//            System.out.println(counterArrayTemplate);
-//        }
+        int[] arrayTemplate = new int[size];
+        int[] arrayCounter = new int[size];
+
+        for (int i = 0; i < arrayTemplate.length; i++) {
+            arrayTemplate[i] = random.nextInt(1, 5);
+        }
+        System.out.println(Arrays.toString(arrayTemplate));
+        for (int i = 0; i < arrayTemplate.length; i++) {
+            int counterArrayTemplate = 0;
+            for (int j = 0; j < arrayTemplate.length; j++) {
+                if (arrayTemplate[i] == arrayTemplate[j]) {
+                    counterArrayTemplate++;
+                }
+            }
+            arrayCounter[i] = counterArrayTemplate;
+        }
+        System.out.println(Arrays.toString(arrayCounter));
+        for (int i = 0; i < arrayCounter.length; i++) {
+            int c  = arrayCounter[0];
+            if (c < arrayCounter[i]){
+                valueArrayTemplate = i;
+            }
+        }
+        System.out.println(valueArrayTemplate);
+        System.out.printf("В массиве %d повторяется наибольшее количество раз = %d %n",
+                arrayTemplate[valueArrayTemplate], arrayCounter[valueArrayTemplate]);
 
 
         System.out.println("Task 4");
@@ -170,7 +201,7 @@ public class Main {
             do {
                 arrayRandom[i] = random.nextInt(-10, 10);
             } while (arrayRandom[i] == 0 && counterMinusValue >= arrayRandom.length / 2 &&
-                    counterPlusValue >= arrayRandom.length / 2 );
+                    counterPlusValue >= arrayRandom.length / 2);
             if (arrayRandom[i] < 0) {
                 counterMinusValue++;
             } else {
