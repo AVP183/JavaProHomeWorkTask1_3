@@ -61,16 +61,16 @@ public class Main {
             }
             arrayCounter[i] = counterArrayTemplate;
         }
-        System.out.println(Arrays.toString(arrayCounter));
+//        System.out.println(Arrays.toString(arrayCounter));
         for (int i = 0; i < arrayCounter.length; i++) {
-            int c  = arrayCounter[0];
-            if (c < arrayCounter[i]){
+            int comparisonValue  = arrayCounter[0];
+            if (comparisonValue < arrayCounter[i]){
                 valueArrayTemplate = i;
             }
         }
-        System.out.println(valueArrayTemplate);
         System.out.printf("В массиве %d повторяется наибольшее количество раз = %d %n",
                 arrayTemplate[valueArrayTemplate], arrayCounter[valueArrayTemplate]);
+
 
 
         System.out.println("Task 4");
