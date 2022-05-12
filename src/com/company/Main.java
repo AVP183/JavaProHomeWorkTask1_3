@@ -210,6 +210,6 @@ public class Main {
         }
         System.out.println(Arrays.toString(arrayRandom));
         System.out.println(counterMinusValue);
-        System.out.println(counterPlusValue); 
+        System.out.println(counterPlusValue);   
     }
 }
